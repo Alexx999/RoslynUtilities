@@ -20,6 +20,11 @@ namespace RoslynUtilities
             return method.Modifiers.ToString().Contains("async");
         }
 
+        public static bool IsTestMethod(this MethodDeclarationSyntax method)
+        {
+            return method.AttributeLists.Any(a => a.Attributes.ToString().Contains("TestMethod"));
+        }
+
         public static bool HasEventArgsParameter(this MethodDeclarationSyntax method)
         {
             return method.ParameterList != null && method.ParameterList.Parameters.Any(param => param.Type.ToString().EndsWith("EventArgs"));
