@@ -17,7 +17,7 @@ namespace RoslynUtilities
 		// Extensions for MethodDeclaration nodes.
 		public static bool IsAsync(this MethodDeclarationSyntax method)
         {
-            return method.Modifiers.ToString().Contains("async");
+            return method.Modifiers.ToString().Contains("async") || method.ReturnType.ToString().Contains("Task");
         }
 
         public static bool IsTestMethod(this MethodDeclarationSyntax method)
